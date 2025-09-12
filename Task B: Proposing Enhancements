@@ -1,0 +1,11 @@
+Task B: Proposing Enhancements
+
+Step 1:
+    Point 1: In terms of functionality, it appears that the parser simply seperates terms based on the commas for any given single value/line within the CSV file and converts each respective term to a string, and puts all the strings within that single value/line in the CSV into an array based on the order (earlier terms in the CSV (based on comma seperation) come toward the beggining of the new array). It could be the case that a user inputs too many fields (too many fields), or forgets a comma (too few fields) and thus the info which the user inputs will be parsed incorrectly. 
+
+    Point 2: In terms of functionality, the CSV could do a better job of specifying to the user how they should be inputting their data. For instance, do we want the first and last name in the name field? Do we want their age in terms of a number or a string representative of their age? 
+
+    Point 3: In terms of extensibility, based on the specifications which we tell the user above, we should validate the data which the user inputs accordingly. Moreover, if we want age to be an integer, we should not only validate that the user has input an integer (and not a string or any other data type representative of their age) but also possibly a lower and upper bound on the integer (ie, 0 < integer < 150). Moreover, if the user inputs data out of this range we could potentially provide the user with an unmistakeable confirmation message that the age they input is correct (maybe the user is unputting an expected newborn, or maybe we are inputting someone who is already passed away or really is abnormally old). 
+    
+    Point 4: In terms of extensibility, regaurding the name information, if a user has input their name and we want their first and last name, asking the user to validate that their first and last name is truly in the system if we get an unexpected number of spaces in the CSV (Ie just Emily, so it looks like only their first name is in there), we should prompt the user with a confirmation message or have them confirm that they don't want to share this info and put N/A or Unspecified in a new, potential last name field (so 2 field might now represent a name, 1st is first name, 2nd is last name, each of which seperated by a comma in the CSV)
+
