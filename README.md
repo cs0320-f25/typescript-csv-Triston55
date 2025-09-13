@@ -85,9 +85,10 @@ All my tests can be found in the basic-parser.tests.ts (found in src directory),
 #### Team members and contributions (include cs logins):
 
 #### Collaborators (cslogins of anyone you worked with on this project and/or generative AI):
-I will include a seperate doc in the gradescope submission with the LLM conversations
 
 I used copilot to get help running test file running properly
+
+Link to LLM conversations: https://docs.google.com/document/d/1NpJR9JBwpmnJ36O35OP4s1CezpVE-LtBSgGs9sE1WAU/edit?tab=t.0
 
 For a few of the tests, I allowed copilots autofill to fill in some of the tests based on what I wrote in the CSV file
 
