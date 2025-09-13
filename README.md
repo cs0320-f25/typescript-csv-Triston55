@@ -100,3 +100,4 @@ In the second schema, I was running into a similar issue where certain lines in 
 #### Total estimated time it took to complete project:
 Roughly 5 - 7 hours
 #### Link to GitHub Repo:  
+https://github.com/cs0320-f25/typescript-csv-Triston55.git
