@@ -9,3 +9,30 @@ Step 1:
     
     Point 4: In terms of extensibility, regaurding the name information, if a user has input their name and we want their first and last name, asking the user to validate that their first and last name is truly in the system if we get an unexpected number of spaces in the CSV (Ie just Emily, so it looks like only their first name is in there), we should prompt the user with a confirmation message or have them confirm that they don't want to share this info and put N/A or Unspecified in a new, potential last name field (so 2 field might now represent a name, 1st is first name, 2nd is last name, each of which seperated by a comma in the CSV)
 
+Step 2: 
+    After prompting ChatGPT with a prompt similar to the one provided in the handout, there was some overlap with its suggestions in terms of both functionality, and extensibility of the CSV. Furthermore, it suggested to test for empty / malformed rows, which was covered in point 3, Encodings such as non standard characters which was covered in one of my tests.  It also suggested appropriate error handling which was addressed in step 1 and in the tests, wherein we should have custom error messages with row/column numbers. Some of its additional suggestions which I missed included using a different data structure like a dictionary to intentionally store the data by their respective fields, with an id for each data point. For instance, { id: "1", name: "Alice", age: "33"}. This could definitely help with accessing certain fields with more specificity as opposed to accessing name and age by assuming where it might exist in the array of strings. 
+
+    After prompting ChatGPT with a broader prompt in comparison to that which was in the handout, being "I am a software developer creating a CSV parser to store data regarding people in TypeScript. How should I go about this" I got a somewhat similar suggestion to that of the dictionary suggestion discussed in the lateral part of the previous paragraph. Moreover, the LLM described a CSV parser implementation which took in a CSV file that still contained peoples information where fields were seperated by commas (ie name,age,email); However, the parser would be able to seperate this info into a dictionary accessed where each key corresponds to the field and the value corresponds to the specific data for that specific data point. For example, in the CSV file the point Alice,23,alice@example.com becomes { name: "Alice", age: 23, email: "alice@example.com" }. This prompt did not give any comprehensive insight errors we might expect and how to handle them though. 
+
+Step 3:
+    Point 1: 
+        In terms of extensibility, I propose the use of a dictionary to store each value of each respective CSV. For example in the CSV file the point Alice,23,alice@example.com becomes { name: "Alice", age: 23, email: "alice@example.com" }. This suggestion came on behalf of the LLM. I believe this will help callers access data with better ease and specificity as opposed to guessing where certain data might fall within the array for that given data point in the CSV. This was suggested on behald of the LLM, and it was not something I considered prior. This resonated with me because it allows for easy access of specific data for any given user (ie easily access name of certain user with key, or age of certain user with key.)
+            User story: As a caller/software engineer who needs to access the data which has been parsed from the CSV, I need to easily find specific data for any given user. 
+            Acceptance Criteria: I am guarantee to access a certain field upon input (ie I want to access name, thus I can use name key for some user)
+
+
+    Point 2: 
+        User story: In terms of functionality, I want  myself as a user to be told what the type and format is of each piece of information i'm putting in (specify the type and format of each field). For example, in the name category I need to know whether to put only my first name, or both my first name and last name seperated only by a space? Furthermore, do you want me to put an alphabetic representation of my age or do you want a numerical?
+            My initial idea for this is to somehow build it into the web page where the user inputs their information. Alternatively the user can input their data incorrectly and get an error message which instructs them on the correct format required. The LLM did not change this idea, and only in the first prompt did it suggest throwing an error message if there was an issue, the second prompt was broadly about building the parser and did not ask for fixes to potential issues.
+
+    Point 3: 
+        (Extensibility) Similar to above, an additional step we need to make sure the data is inputted in the correct format / manner can also be thought of from the extensibility standpoint, from the developers prespective. I had initially thought of this idea before the LLM suggested it, but this step will further ensure that data can be retrieved swiftly. 
+            User story: As the developer, I want to make sure that the users are inputting their data in a specific format. Therefore, I want to build my parser so that it accepts only data in this type. Maybe my parser will throw an error if the data is input incorrectly, or it should be able to handle incorrect data by converting it to the correct data type and format. 
+
+    Point 4: 
+        In terms of extensibility, I want to make sure I have enough memory on my CPU as the CSV file might contain extremely large amounts of information. This idea came from the LLM, as it suggested that real world CSVs can be gigabytes in size. This resonated with me because this fact will impact the performance of the CPU running the program and will allow the parser to be used in real world contexts and not just in these smaller test cases.
+            User story: As a developer, I want to be able to deal with large files. Moreover, I want to be able to moad only portions of the CSV file into memory in order to save capability on my CPU, as it is not uncommon for CSV files to be many gigabytes. 
+
+
+
+        
